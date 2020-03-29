@@ -1,6 +1,6 @@
 require(`dotenv`).config({
   path: `.env`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -18,6 +18,10 @@ module.exports = {
           {
             title: `About`,
             slug: `/about`,
+          },
+          {
+            title: "Contact Me",
+            slug: "/contact",
           },
         ],
         externalLinks: [
@@ -67,4 +71,4 @@ module.exports = {
     `gatsby-plugin-netlify`,
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],
-}
+};
