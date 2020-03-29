@@ -4,7 +4,12 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: "witoszek.dev",
+    siteTitleAlt: `Jonatan Witoszek personal website`,
+    siteHeadline: "Jonatan Witoszek personal website",
+    siteUrl: "https://witoszek.dev",
+    author: "@witoszekdev",
+    siteAuthor: "Jonatan Witoszek",
   },
   plugins: [
     {
@@ -26,12 +31,12 @@ module.exports = {
         ],
         externalLinks: [
           {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            name: "Github",
+            url: "https://github.com/taniotanio7",
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            name: `Twitter`,
+            url: `https://twitter.com/witoszekdev`,
           },
         ],
       },
@@ -46,8 +51,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
+        name: `witoszek.dev – Jonatan Witoszek personal website`,
+        short_name: `witoszek.dev`,
         description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
         start_url: `/`,
         background_color: `#fff`,
