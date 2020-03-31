@@ -20,11 +20,11 @@ const formSchema = yup.object({
     .required("You have to write something :)"),
 });
 
-const encode = (data) => {
+function encode(data) {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
-};
+}
 
 export default function ContactForm() {
   return (
@@ -46,15 +46,12 @@ export default function ContactForm() {
         <Formik
           initialValues={{ email: "", message: "" }}
           onSubmit={async (values) => {
-            const data = Object.entries(values).reduce(
-              (prev, [key, value]) => ({ ...prev, [`form-${key}`]: value }),
-              {}
-            );
             const result = await fetch("/", {
               method: "POST",
-              // headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: encode({ "form-name": "contact", ...data }),
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: encode({ "form-name": "contact", ...values }),
             });
+            console.log(result);
           }}
           validationSchema={formSchema}
         >
@@ -62,7 +59,7 @@ export default function ContactForm() {
             <form
               onSubmit={handleSubmit}
               name="contact"
-              action="/about/thank-you"
+              action="/about/thank-you/"
               method="post"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
@@ -118,7 +115,7 @@ export default function ContactForm() {
                   Send
                 </Button>
               </Box>
-            </Form>
+            </form>
           )}
         </Formik>
       </Box>
