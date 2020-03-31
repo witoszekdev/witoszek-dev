@@ -72,6 +72,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
     // `gatsby-plugin-webpack-bundle-analyser-v2`,

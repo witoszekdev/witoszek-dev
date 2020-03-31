@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx } from "@theme-ui/core";
+import { jsx, useColorMode } from "theme-ui";
 import { navigate } from "gatsby";
 import { Box, Input, Textarea, Button, Text } from "@theme-ui/components";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
 import * as yup from "yup";
 
 const formSchema = yup.object({
@@ -28,6 +29,7 @@ function encode(data) {
 }
 
 export default function ContactForm() {
+  const [theme] = useColorMode();
   return (
     <Box
       sx={{
@@ -45,15 +47,19 @@ export default function ContactForm() {
         }}
       >
         <Formik
-          initialValues={{ email: "", message: "" }}
-          onSubmit={async (values, actions) => {
+          initialValues={{ email: "", message: "", captcha: null }}
+          onSubmit={async ({ captcha, ...values }, actions) => {
             try {
               await fetch("/", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
                 },
-                body: encode({ "form-name": "contact", ...values }),
+                body: encode({
+                  "form-name": "contact",
+                  "g-recaptcha-response": captcha,
+                  ...values,
+                }),
               });
               await navigate("/contact/thank-you/");
             } catch (e) {
@@ -65,7 +71,14 @@ export default function ContactForm() {
           }}
           validationSchema={formSchema}
         >
-          {({ errors, touched, handleSubmit, submitting }) => (
+          {({
+            errors,
+            touched,
+            handleSubmit,
+            submitting,
+            setFieldValue,
+            values,
+          }) => (
             <form
               onSubmit={handleSubmit}
               name="contact"
@@ -73,7 +86,9 @@ export default function ContactForm() {
               method="post"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
+              data-netlify-recaptcha="true"
             >
+              {console.log(values)}
               <h3 sx={{ marginTop: 0 }}>Contact Form</h3>
               {errors.general && (
                 <Box bg="errorBg" color="error" mb={3} p={3}>
@@ -121,14 +136,16 @@ export default function ContactForm() {
                 sx={{
                   width: "100%",
                   display: "flex",
-                  justifyContent: "flex-end",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
                 }}
               >
-                <Button
-                  type="submit"
-                  variant="buttons.elevated"
-                  sx={{ alignSelf: "flex-end" }}
-                >
+                <ReCAPTCHA
+                  sitekey="6Ldhp-UUAAAAALgJLyGA9znKoFH1PpbTTOK8NaWf"
+                  theme={theme}
+                  onChange={(val) => setFieldValue("captcha", val)}
+                />
+                <Button mt={2} type="submit" variant="buttons.elevated">
                   Send
                 </Button>
               </Box>
