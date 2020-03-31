@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@theme-ui/core";
+import { navigate } from "gatsby";
 import { Box, Input, Textarea, Button, Text } from "@theme-ui/components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
@@ -45,26 +46,40 @@ export default function ContactForm() {
       >
         <Formik
           initialValues={{ email: "", message: "" }}
-          onSubmit={async (values) => {
-            const result = await fetch("/", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: encode({ "form-name": "contact", ...values }),
-            });
-            console.log(result);
+          onSubmit={async (values, actions) => {
+            try {
+              await fetch("/", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: encode({ "form-name": "contact", ...values }),
+              });
+              await navigate("/contact/thank-you/");
+            } catch (e) {
+              actions.setErrors({
+                general:
+                  "There was a problem with submitting the form. Please try again.",
+              });
+            }
           }}
           validationSchema={formSchema}
         >
-          {({ errors, touched, handleSubmit }) => (
+          {({ errors, touched, handleSubmit, submitting }) => (
             <form
               onSubmit={handleSubmit}
               name="contact"
-              action="/about/thank-you/"
+              action="/contact/thank-you/"
               method="post"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
             >
               <h3 sx={{ marginTop: 0 }}>Contact Form</h3>
+              {errors.general && (
+                <Box bg="errorBg" color="error" mb={3} p={3}>
+                  {errors.general}
+                </Box>
+              )}
               <Field
                 type="email"
                 name="email"
@@ -75,6 +90,7 @@ export default function ContactForm() {
                     : "inputs.pill"
                 }
                 as={Input}
+                disabled={submitting}
               />
               <ErrorMessage
                 name="email"
@@ -93,6 +109,7 @@ export default function ContactForm() {
                     : "inputs.pill"
                 }
                 sx={{ resize: "vertical", fontFamily: "sans" }}
+                disabled={submitting}
               />
               <ErrorMessage
                 name="message"

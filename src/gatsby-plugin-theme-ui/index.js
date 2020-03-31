@@ -6,13 +6,15 @@ export default {
   colors: {
     ...defaultTheme.colors,
     error: tailwind.colors.red,
+    errorBg: tailwind.colors.red[1],
     buttonText: "white",
     buttonBg: defaultTheme.colors.primary,
     buttonHoverText: "white",
     modes: {
       dark: {
         ...defaultTheme.colors.modes.dark,
-        error: tailwind.colors.red[4],
+        error: tailwind.colors.red[3],
+        errorBg: tailwind.colors.red[9],
         buttonText: tailwind.colors.purple[9],
         buttonBg: tailwind.colors.purple[4],
         primaryHover: tailwind.colors.blue[2],
