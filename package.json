@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "minimal-blog",
-  "description": "Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.",
+  "name": "witoszek-dev",
+  "description": "Jonatan Witoszek personal blogs",
   "version": "1.0.8",
   "author": "LekoArts <hello@lekoarts.de>",
   "license": "MIT",
@@ -17,6 +17,10 @@
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "^2.2.2",
+    "@theme-ui/components": "^0.3.1",
+    "@theme-ui/core": "^0.3.1",
+    "@theme-ui/css": "^0.3.1",
+    "@theme-ui/presets": "^0.3.0",
     "formik": "^2.1.4",
     "gatsby": "^2.13.3",
     "gatsby-plugin-google-analytics": "^2.1.4",
@@ -26,10 +30,12 @@
     "gatsby-plugin-sitemap": "^2.2.19",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-google-recaptcha": "^2.0.1",
     "yup": "^0.28.3"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8"
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
+    "prettier": "^2.0.2"
   }
 }
