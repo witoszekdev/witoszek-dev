@@ -21,6 +21,10 @@ module.exports = {
             slug: `/blog`,
           },
           {
+            title: "Projects",
+            slug: "/projects",
+          },
+          {
             title: `About`,
             slug: `/about`,
           },
@@ -39,6 +43,13 @@ module.exports = {
             url: `https://twitter.com/witoszekdev`,
           },
         ],
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "projects",
+        path: `${__dirname}/content/projects`,
       },
     },
     {
@@ -75,6 +86,8 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],
 };
