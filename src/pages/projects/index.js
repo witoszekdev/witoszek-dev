@@ -41,14 +41,14 @@ export default function ProjectsPage({ data }) {
       >
         My Projects
       </h2>
-      <span sx={{ fontFamily: "mono" }}>Filter projects</span>
+      <span sx={{ fontFamily: "mono" }}>Filter</span>
       <div
         sx={{
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
-          marginBottom: "3",
-          "& > div": { marginRight: "2" },
+          marginBottom: ["3", "4", "5"],
+          "& > div": { marginRight: "2", marginBottom: "2" },
         }}
       >
         {technologies.map((name) => (
