@@ -3,7 +3,7 @@ import { jsx } from "theme-ui";
 import { Link } from "gatsby";
 import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout";
 // @ts-ignore
-import Hero from "@lekoarts/gatsby-theme-minimal-blog/src/texts/hero";
+import Hero from "../texts/hero";
 // @ts-ignore
 import Bottom from "@lekoarts/gatsby-theme-minimal-blog/src/texts/bottom";
 import Title from "@lekoarts/gatsby-theme-minimal-blog/src/components/title";

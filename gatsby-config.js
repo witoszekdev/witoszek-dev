@@ -25,10 +25,6 @@ module.exports = {
             slug: "/projects",
           },
           {
-            title: `About`,
-            slug: `/about`,
-          },
-          {
             title: "Contact Me",
             slug: "/contact",
           },

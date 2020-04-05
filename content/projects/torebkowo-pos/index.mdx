@@ -1,13 +1,19 @@
 ---
 title: "Torebkowo POS"
-created: 2019-01-01
+created: 2019-02-13
 slug: "/torebkowo-pos"
 technologies:
     - JS
     - Vue
     - Electron
 frontImg: "./frontimg.png"
-shortDesc: "This was a fun project. I've learned a lot!"
+shortDesc: "Multiplatform POS application for managing in-store sales"
 ---
 
-Description WIP
+This was a POS application made for Torebkowo.com.pl brick-and-mortar store.
+
+Rather than building a native application, we decided to use Electron to speed-up our development process.
+This allows to use native components like communicating with label and receipt printers combined with familiar web technologies like HTML and CSS.
+
+The project also was setup to use Travis and AppVeyor for CI/CD. As soon as a commit was assigned version tag, the project was built and distributed to the end user.
+This allowed me to develop the app for Windows users on macOS and quickly know when something went wrong.
