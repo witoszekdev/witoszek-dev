@@ -39,9 +39,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             title
             technologies
             created(formatString: "DD-MM-YYYY")
+            shortDesc
             frontImg {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 95) {
+                fluid(quality: 95) {
                   base64
                   aspectRatio
                   src
