@@ -1,5 +1,5 @@
 /* @jsx jsx */
-import React, { useEffect, useState } from "react";
+import React, { useState, useCallback } from "react";
 import { graphql } from "gatsby";
 import { jsx } from "@theme-ui/core";
 import { Box, IconButton } from "@theme-ui/components";
@@ -18,14 +18,18 @@ export default function ProjectsPage({ data }) {
     ),
   ];
 
-  useEffect(() => {
-    if (filterTechnology === null) {
+  const handleFilter = useCallback((val) => {
+    if (val === null) {
+      setFilterTechnology(null);
       setFilteredProjects(projects);
     } else {
-      const newProjects = projects.filter(project => project.frontmatter.technologies.includes(filterTechnology));
+      setFilterTechnology(val);
+      const newProjects = projects.filter((project) =>
+        project.frontmatter.technologies.includes(val)
+      );
       setFilteredProjects(newProjects);
     }
-  }, [filterTechnology]);
+  }, []);
 
   return (
     <Layout>
@@ -53,11 +57,11 @@ export default function ProjectsPage({ data }) {
             key={name}
             name={name}
             selected={filterTechnology === name}
-            onClick={() => setFilterTechnology(name)}
+            onClick={() => handleFilter(name)}
           />
         ))}
         {filterTechnology && (
-          <IconButton size={8} onClick={() => setFilterTechnology(null)}>
+          <IconButton size={8} onClick={() => handleFilter(null)}>
             <FiXCircle size={24} />
           </IconButton>
         )}
@@ -74,6 +78,7 @@ export default function ProjectsPage({ data }) {
       >
         {filteredProjects.map(({ frontmatter: project }) => (
           <ProjectCard
+            key={project.title}
             imgData={project.frontImg.childImageSharp.fluid}
             name={project.title}
             description={project.shortDesc}
