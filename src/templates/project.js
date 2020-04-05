@@ -20,9 +20,21 @@ export default ({ pageContext: { body, frontmatter } }) => {
           <ProjectDataLabel icon={FiClock} label="Created">
             {frontmatter.created}
           </ProjectDataLabel>
-          <div sx={{display: 'flex', alignItems: 'center', marginTop: '2', "& > div": {marginLeft: "2"}, "& > div:first-child": {marginLeft: "0"}}}>
-            {frontmatter.technologies.map(name => <TechnologyBadge name={name} />)}
-          </div>
+          <ProjectDataLabel label="Used technologies">
+            <div
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                fontFamily: "sans",
+                "& > div": { marginRight: "2", marginBottom: "1" },
+              }}
+            >
+              {frontmatter.technologies.map((name) => (
+                <TechnologyBadge key={name} name={name} />
+              ))}
+            </div>
+          </ProjectDataLabel>
           <p>{frontmatter.shortDesc}</p>
         </div>
         <Img
@@ -30,7 +42,7 @@ export default ({ pageContext: { body, frontmatter } }) => {
           sx={{ boxShadow: "lg" }}
         />
       </div>
-      <Divider sx={{marginTop: '2.5rem', marginBottom: '1.5rem'}} />
+      <Divider sx={{ marginTop: "2.5rem", marginBottom: "1.5rem" }} />
       <article>
         <MDXRenderer>{body}</MDXRenderer>
       </article>
