@@ -6,7 +6,7 @@ export default function ProjectDataLabel({ children, icon: Icon, label }) {
   return (
     <>
       <span
-        sx={{ fontSize: "0.875rem", fontWeight: "light", fontFamily: "mono" }}
+        sx={{ fontSize: "0.875rem", fontWeight: "light", color: 'textMuted', fontFamily: "mono" }}
       >
         {label}
       </span>

@@ -7,6 +7,7 @@ import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout";
 import { FiClock } from "react-icons/fi";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import ProjectDataLabel from "../components/ProjectDataLabel";
+import TechnologyBadge from "../components/TechnologyBadge";
 
 export default ({ pageContext: { body, frontmatter } }) => {
   return (
@@ -19,6 +20,9 @@ export default ({ pageContext: { body, frontmatter } }) => {
           <ProjectDataLabel icon={FiClock} label="Created">
             {frontmatter.created}
           </ProjectDataLabel>
+          <div sx={{display: 'flex', alignItems: 'center', marginTop: '2', "& > div": {marginLeft: "2"}, "& > div:first-child": {marginLeft: "0"}}}>
+            {frontmatter.technologies.map(name => <TechnologyBadge name={name} />)}
+          </div>
           <p>{frontmatter.shortDesc}</p>
         </div>
         <Img
@@ -32,5 +36,4 @@ export default ({ pageContext: { body, frontmatter } }) => {
       </article>
     </Layout>
   );
-  // return <pre>{JSON.stringify(pageContext, null, 2)}</pre>
 };

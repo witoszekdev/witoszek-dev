@@ -1,6 +1,8 @@
+import {DiJsBadge} from "react-icons/di"
+
 export default {
   name: "JavaScript",
   shortName: "JS",
-  icon: null,
+  icon: DiJsBadge,
   color: "#ddb842"
 }
