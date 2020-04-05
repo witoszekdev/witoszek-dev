@@ -1,17 +1,86 @@
-import React from "react";
+/* @jsx jsx */
+import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
-import {Box} from "@theme-ui/components";
+import { jsx } from "@theme-ui/core";
+import { Box, IconButton } from "@theme-ui/components";
+import { FiXCircle } from "react-icons/fi";
 import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout";
 import ProjectCard from "../../components/ProjectCard";
+import TechnologyBadge from "../../components/TechnologyBadge";
 
 export default function ProjectsPage({ data }) {
   const projects = data.allMdx.nodes;
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [filterTechnology, setFilterTechnology] = useState(undefined);
+  const technologies = [
+    ...new Set(
+      data.allMdx.nodes.flatMap((project) => project.frontmatter.technologies)
+    ),
+  ];
+
+  useEffect(() => {
+    if (filterTechnology === null) {
+      setFilteredProjects(projects);
+    } else {
+      const newProjects = projects.filter(project => project.frontmatter.technologies.includes(filterTechnology));
+      setFilteredProjects(newProjects);
+    }
+  }, [filterTechnology]);
+
   return (
     <Layout>
-      <Box sx={{display: 'grid', gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'], gridColumnGap: '10px', justifyItems: 'center', width: '100%', }}>
-      {projects.map(({frontmatter: project}) => (
-        <ProjectCard imgData={project.frontImg.childImageSharp.fluid} name={project.title} description={project.shortDesc} link={`/projects${project.slug}`} />
-      ))}
+      <h2
+        sx={{
+          color: `heading`,
+          fontSize: [4, 5, 6],
+        }}
+      >
+        My Projects
+      </h2>
+      <span sx={{ fontFamily: "mono" }}>Filter projects</span>
+      <div
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          marginBottom: "3",
+          "& > div": { marginRight: "2" },
+        }}
+      >
+        {technologies.map((name) => (
+          <TechnologyBadge
+            sx={{ cursor: "pointer" }}
+            key={name}
+            name={name}
+            selected={filterTechnology === name}
+            onClick={() => setFilterTechnology(name)}
+          />
+        ))}
+        {filterTechnology && (
+          <IconButton size={8} onClick={() => setFilterTechnology(null)}>
+            <FiXCircle size={24} />
+          </IconButton>
+        )}
+      </div>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: ["1fr", "1fr 1fr", "1fr 1fr", "1fr 1fr 1fr"],
+          gridColumnGap: "3",
+          gridRowGap: "4",
+          justifyItems: "center",
+          width: "100%",
+        }}
+      >
+        {filteredProjects.map(({ frontmatter: project }) => (
+          <ProjectCard
+            imgData={project.frontImg.childImageSharp.fluid}
+            name={project.title}
+            description={project.shortDesc}
+            link={`/projects${project.slug}`}
+            technologies={project.technologies}
+          />
+        ))}
       </Box>
     </Layout>
   );
@@ -29,7 +98,12 @@ export const query = graphql`
           shortDesc
           frontImg {
             childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 200, cropFocus: NORTH, quality: 95) {
+              fluid(
+                maxWidth: 400
+                maxHeight: 200
+                cropFocus: NORTH
+                quality: 95
+              ) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
