@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             slug
             title
             technologies
-            created(formatString: "DD-MM-YYYY")
+            created(formatString: "DD.MM.YYYY")
             shortDesc
             frontImg {
               childImageSharp {

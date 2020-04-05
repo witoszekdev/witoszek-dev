@@ -93,7 +93,7 @@ export default function ProjectsPage({ data }) {
 
 export const query = graphql`
   query ProjectsMDX {
-    allMdx(filter: { fileAbsolutePath: { regex: "//projects//" } }) {
+    allMdx(filter: { fileAbsolutePath: { regex: "//projects//" } }, sort: {fields: frontmatter___created, order: DESC}) {
       nodes {
         frontmatter {
           title

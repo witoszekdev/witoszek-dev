@@ -15,7 +15,7 @@ export default ({ pageContext: { body, frontmatter } }) => {
       <Heading as="h2" sx={{ fontSize: "2rem", paddingBottom: "1rem" }}>
         {frontmatter.title}
       </Heading>
-      <div sx={{ display: "grid", gridTemplateColumns: ["1fr", "1fr 1fr"] }}>
+      <div sx={{ display: "grid", gridTemplateColumns: ["1fr", "1fr 1fr"], gridColumnGap: ['2', '3', '4'] }}>
         <div>
           <ProjectDataLabel icon={FiClock} label="Created">
             {frontmatter.created}
