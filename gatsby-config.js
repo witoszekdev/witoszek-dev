@@ -60,7 +60,7 @@ module.exports = {
       options: {
         name: `witoszek.dev – Jonatan Witoszek personal website`,
         short_name: `witoszek.dev`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        description: `Personal blog of Jonatan Witoszek`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,
@@ -84,6 +84,7 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],
 };
