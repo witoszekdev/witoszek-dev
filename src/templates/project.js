@@ -1,6 +1,6 @@
 /* @jsx jsx */
 import React from "react";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { jsx } from "@theme-ui/core";
 import { Heading, Divider } from "@theme-ui/components";
 import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout";
@@ -37,10 +37,9 @@ export default ({ pageContext: { body, frontmatter } }) => {
           </ProjectDataLabel>
           <p>{frontmatter.shortDesc}</p>
         </div>
-        <Img
-          fluid={frontmatter.frontImg.childImageSharp.fluid}
-          sx={{ boxShadow: "lg" }}
-        />
+        <GatsbyImage
+          image={frontmatter.frontImg.childImageSharp.gatsbyImageData}
+          sx={{ boxShadow: "lg" }} />
       </div>
       <Divider sx={{ marginTop: "2.5rem", marginBottom: "1.5rem" }} />
       <article>

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { jsx } from "@theme-ui/core";
 import { Text, Button, Box } from "@theme-ui/components";
 import {FiArrowRight} from "react-icons/fi"
@@ -31,7 +31,7 @@ export default function ProjectCard({
       }}
       {...props}
     >
-      <Img fluid={imgData} />
+      <GatsbyImage image={imgData} />
       <Text sx={{ fontSize: 2, fontWeight: "medium" }}>{name}</Text>
       <Text sx={{marginBottom: '2'}}>{description}</Text>
       <div sx={{display: 'flex', justifyItems: 'center', marginBottom: '2', flexWrap: 'wrap', "& > div": {marginRight: '2', marginBottom: '2'}}}>

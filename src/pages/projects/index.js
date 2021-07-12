@@ -79,7 +79,7 @@ export default function ProjectsPage({ data }) {
         {filteredProjects.map(({ frontmatter: project }) => (
           <ProjectCard
             key={project.title}
-            imgData={project.frontImg.childImageSharp.fluid}
+            imgData={project.frontImg.childImageSharp.gatsbyImageData}
             name={project.title}
             description={project.shortDesc}
             link={`/projects${project.slug}`}
@@ -91,30 +91,31 @@ export default function ProjectsPage({ data }) {
   );
 }
 
-export const query = graphql`
-  query ProjectsMDX {
-    allMdx(filter: { fileAbsolutePath: { regex: "//projects//" } }, sort: {fields: frontmatter___created, order: DESC}) {
-      nodes {
-        frontmatter {
-          title
-          technologies
-          slug
-          created(locale: "pl")
-          shortDesc
-          frontImg {
-            childImageSharp {
-              fluid(
-                maxWidth: 400
-                maxHeight: 200
-                cropFocus: NORTH
-                quality: 95
-              ) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
+export const query = graphql`query ProjectsMDX {
+  allMdx(
+    filter: {fileAbsolutePath: {regex: "//projects//"}}
+    sort: {fields: frontmatter___created, order: DESC}
+  ) {
+    nodes {
+      frontmatter {
+        title
+        technologies
+        slug
+        created(locale: "pl")
+        shortDesc
+        frontImg {
+          childImageSharp {
+            gatsbyImageData(
+              width: 400
+              height: 200
+              quality: 95
+              transformOptions: {cropFocus: NORTH}
+              layout: CONSTRAINED
+            )
           }
         }
       }
     }
   }
+}
 `;

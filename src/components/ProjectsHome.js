@@ -8,41 +8,36 @@ import Title from "@lekoarts/gatsby-theme-minimal-blog/src/components/title";
 import ProjectCard from "./ProjectCard";
 
 const ProjectsList = () => {
-  const data = useStaticQuery(graphql`
-    query projectsHome {
-      allMdx(
-        filter: { fileAbsolutePath: { regex: "//projects//" } }
-        limit: 3
-      ) {
-        nodes {
-          frontmatter {
-            title
-            technologies
-            slug
-            created(locale: "pl")
-            shortDesc
-            frontImg {
-              childImageSharp {
-                fluid(
-                  maxWidth: 400
-                  maxHeight: 200
-                  cropFocus: NORTH
-                  quality: 95
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
+  const data = useStaticQuery(graphql`query projectsHome {
+  allMdx(filter: {fileAbsolutePath: {regex: "//projects//"}}, limit: 3) {
+    nodes {
+      frontmatter {
+        title
+        technologies
+        slug
+        created(locale: "pl")
+        shortDesc
+        frontImg {
+          childImageSharp {
+            gatsbyImageData(
+              width: 400
+              height: 200
+              quality: 95
+              transformOptions: {cropFocus: NORTH}
+              layout: CONSTRAINED
+            )
           }
         }
       }
     }
-  `);
+  }
+}
+`);
   const projects = data.allMdx.nodes;
   return projects.map(({ frontmatter: project }) => (
     <ProjectCard
       key={project.title}
-      imgData={project.frontImg.childImageSharp.fluid}
+      imgData={project.frontImg.childImageSharp.gatsbyImageData}
       name={project.title}
       description={project.shortDesc}
       link={`/projects${project.slug}`}
