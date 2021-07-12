@@ -13,7 +13,8 @@
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "^3.0.2",
@@ -48,7 +49,19 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.30.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.24",
+    "husky": "^7.0.1",
     "prettier": "^2.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "volta": {
+    "node": "14.17.3",
+    "npm": "7.19.1"
   }
 }
