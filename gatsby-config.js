@@ -101,6 +101,14 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-mailgo",
+      options: {
+        mailgoConfig: {
+          dark: true,
+        },
+      },
+    },
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],
 };

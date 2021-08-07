@@ -7209,6 +7209,13 @@ gatsby-plugin-image@^1.11.0:
     objectFitPolyfill "^2.3.0"
     prop-types "^15.7.2"
 
+gatsby-plugin-mailgo@^0.12.2:
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mailgo/-/gatsby-plugin-mailgo-0.12.2.tgz#9c7077af135ca02360ecc0fcbbe7b6b1e24ad4de"
+  integrity sha512-H67golEBSo//s1EoerNovKYTs1A2vO7b0mC8RX4T/BgfycIzmvv6l35YnGkpqRx6eqYkt5xfmJZPYnr2W035+A==
+  dependencies:
+    mailgo "0.12.2"
+
 gatsby-plugin-manifest@^3.11.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-3.11.0.tgz#9dfc08f3573636edb7eba904291da9ca482524f4"
@@ -10104,6 +10111,11 @@ magic-string@^0.25.1:
   integrity sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==
   dependencies:
     sourcemap-codec "^1.4.4"
+
+mailgo@0.12.2:
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/mailgo/-/mailgo-0.12.2.tgz#b5373c027e475c933dbeabee6e2a71c516608428"
+  integrity sha512-iX4F3eOhPJ+12YlM51UNV8yTYwxHywaGP1C9Qaep/iNP2ZS+xzqHR7U3o+7HoCL19gZKysc7+MwgBEiRy8ogzA==
 
 make-dir@^1.0.0, make-dir@^1.2.0:
   version "1.3.0"
