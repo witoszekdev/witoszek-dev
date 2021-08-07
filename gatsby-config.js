@@ -63,12 +63,6 @@ module.exports = {
         path: `${__dirname}/content/projects`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: process.env.GOOGLE_ANALYTICS_ID,
-    //   },
-    // },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -107,6 +101,13 @@ module.exports = {
         mailgoConfig: {
           dark: true,
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-simple-analytics",
+      options: {
+        domain: "sa.witoszek.dev",
+        trackPageViews: true,
       },
     },
     // `gatsby-plugin-webpack-bundle-analyser-v2`,

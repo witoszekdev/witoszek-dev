@@ -20,10 +20,6 @@ export default function HTML(props) {
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
-        <script async defer src="https://sa.witoszek.dev/app.js"></script>
-        <noscript>
-          <img src="https://sa.witoszek.dev/image.gif" alt="" />
-        </noscript>
         {props.postBodyComponents}
       </body>
     </html>

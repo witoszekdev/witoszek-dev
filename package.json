@@ -38,6 +38,7 @@
     "gatsby-plugin-netlify": "^3.11.0",
     "gatsby-plugin-offline": "^4.11.0",
     "gatsby-plugin-sharp": "^3.11.0",
+    "gatsby-plugin-simple-analytics": "^1.0.4",
     "gatsby-plugin-sitemap": "^4.7.0",
     "gatsby-plugin-theme-ui": "^0.9.1",
     "gatsby-source-filesystem": "^3.11.0",
