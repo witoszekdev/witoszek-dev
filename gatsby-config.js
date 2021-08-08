@@ -6,6 +6,8 @@ module.exports = {
   siteMetadata: {
     siteTitle: "witoszek.dev",
     siteTitleAlt: `Jonatan Witoszek personal website`,
+    siteDescription: "Jonatan Witoszek personal website",
+    siteLanguage: "en",
     siteHeadline: "Jonatan Witoszek personal website",
     siteUrl: "https://witoszek.dev",
     author: "@witoszekdev",
@@ -64,6 +66,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -71,9 +80,10 @@ module.exports = {
         short_name: `witoszek.dev`,
         description: `Personal blog of Jonatan Witoszek`,
         start_url: `/`,
-        background_color: `#fff`,
-        theme_color: `#6B46C1`,
+        background_color: `#1A202C`,
+        theme_color: `#CBD5E0`,
         display: `standalone`,
+        icon: "static/favicon.svg",
         icons: [
           {
             src: `/android-chrome-192x192.png`,
@@ -88,13 +98,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-mailgo",
       options: {
