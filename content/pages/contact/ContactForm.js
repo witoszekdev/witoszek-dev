@@ -1,31 +1,30 @@
 /** @jsx jsx */
-import React from "react";
-import { jsx, useColorMode } from "theme-ui";
-import { navigate } from "gatsby";
-import { Box, Input, Textarea, Button, Text } from "@theme-ui/components";
-import { Formik, Field, ErrorMessage } from "formik";
-import ReCAPTCHA from "react-google-recaptcha";
-import * as yup from "yup";
+import { jsx, useColorMode } from 'theme-ui';
+import { navigate } from 'gatsby';
+import { Box, Input, Textarea, Button, Text } from '@theme-ui/components';
+import { Formik, Field, ErrorMessage } from 'formik';
+import ReCAPTCHA from 'react-google-recaptcha';
+import * as yup from 'yup';
 
 const formSchema = yup.object({
   email: yup
     .string()
     .email("This doesn't look like correct e-mail address")
-    .required("E-mail is required"),
+    .required('E-mail is required'),
   message: yup
     .string()
-    .min(10, "Please send message longer than 10 characters")
+    .min(10, 'Please send message longer than 10 characters')
     .max(
       50000,
-      "This message looks very big, please send it as regular e-mail message"
+      'This message looks very big, please send it as regular e-mail message'
     )
-    .required("You have to write something :)"),
+    .required('You have to write something :)'),
 });
 
 function encode(data) {
   return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
 }
 
 export default function ContactForm() {
@@ -33,39 +32,39 @@ export default function ContactForm() {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: ["flex-start", "center", "flex-end"],
+        display: 'flex',
+        justifyContent: ['flex-start', 'center', 'flex-end'],
       }}
     >
       <Box
         p={3}
         sx={{
-          backgroundColor: "muted",
-          boxShadow: "lg",
-          width: ["full", "4/6", "7/12"],
-          borderRadius: "default",
+          backgroundColor: 'muted',
+          boxShadow: 'lg',
+          width: ['full', '4/6', '7/12'],
+          borderRadius: 'default',
         }}
       >
         <Formik
-          initialValues={{ email: "", message: "", captcha: null }}
+          initialValues={{ email: '', message: '', captcha: null }}
           onSubmit={async ({ captcha, ...values }, actions) => {
             try {
-              await fetch("/", {
-                method: "POST",
+              await fetch('/', {
+                method: 'POST',
                 headers: {
-                  "Content-Type": "application/x-www-form-urlencoded",
+                  'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: encode({
-                  "form-name": "contact",
-                  "g-recaptcha-response": captcha,
+                  'form-name': 'contact',
+                  'g-recaptcha-response': captcha,
                   ...values,
                 }),
               });
-              await navigate("/contact/thank-you/");
+              await navigate('/contact/thank-you/');
             } catch (e) {
               actions.setErrors({
                 general:
-                  "There was a problem with submitting the form. Please try again.",
+                  'There was a problem with submitting the form. Please try again.',
               });
             }
           }}
@@ -101,8 +100,8 @@ export default function ContactForm() {
                 placeholder="Your e-mail"
                 variant={
                   errors.email && touched.email
-                    ? "inputs.pillError"
-                    : "inputs.pill"
+                    ? 'inputs.pillError'
+                    : 'inputs.pill'
                 }
                 as={Input}
                 disabled={submitting}
@@ -110,7 +109,7 @@ export default function ContactForm() {
               <ErrorMessage
                 name="email"
                 component={Text}
-                sx={{ marginTop: "1", color: "error" }}
+                sx={{ marginTop: '1', color: 'error' }}
               />
               <Field
                 name="message"
@@ -120,30 +119,30 @@ export default function ContactForm() {
                 mt={3}
                 variant={
                   errors.message && touched.message
-                    ? "inputs.pillError"
-                    : "inputs.pill"
+                    ? 'inputs.pillError'
+                    : 'inputs.pill'
                 }
-                sx={{ resize: "vertical", fontFamily: "sans" }}
+                sx={{ resize: 'vertical', fontFamily: 'sans' }}
                 disabled={submitting}
               />
               <ErrorMessage
                 name="message"
                 component={Text}
-                sx={{ marginTop: "1", color: "error" }}
+                sx={{ marginTop: '1', color: 'error' }}
               />
               <Box
                 mt={3}
                 sx={{
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-end",
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
                 }}
               >
                 <ReCAPTCHA
                   sitekey="6Ldhp-UUAAAAALgJLyGA9znKoFH1PpbTTOK8NaWf"
                   theme={theme}
-                  onChange={(val) => setFieldValue("captcha", val)}
+                  onChange={(val) => setFieldValue('captcha', val)}
                 />
                 <Button mt={2} type="submit" variant="buttons.elevated">
                   Send

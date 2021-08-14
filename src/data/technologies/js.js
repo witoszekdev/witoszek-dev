@@ -1,8 +1,10 @@
-import {DiJsBadge} from "react-icons/di"
+import { DiJsBadge } from "react-icons/di";
 
-export default {
+const js = {
   name: "JavaScript",
   shortName: "JS",
   icon: DiJsBadge,
-  color: "#ddb842"
-}
+  color: "#ddb842",
+};
+
+export default js;

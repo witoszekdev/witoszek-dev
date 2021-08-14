@@ -1,7 +1,7 @@
 import defaultTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui/index";
 import { tailwind } from "@theme-ui/presets";
 
-export default {
+const theme = {
   ...defaultTheme,
   colors: {
     ...defaultTheme.colors,
@@ -71,3 +71,5 @@ export default {
   },
   useColorSchemeMediaQuery: true,
 };
+
+export default theme;
