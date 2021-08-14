@@ -4,14 +4,14 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    siteTitle: "witoszek.dev",
+    siteTitle: 'witoszek.dev',
     siteTitleAlt: `Jonatan Witoszek personal website`,
-    siteDescription: "Jonatan Witoszek personal website",
-    siteLanguage: "en",
-    siteHeadline: "Jonatan Witoszek personal website",
-    siteUrl: "https://witoszek.dev",
-    author: "@witoszekdev",
-    siteAuthor: "Jonatan Witoszek",
+    siteDescription: 'Jonatan Witoszek personal website',
+    siteLanguage: 'en',
+    siteHeadline: 'Jonatan Witoszek personal website',
+    siteUrl: 'https://witoszek.dev',
+    author: '@witoszekdev',
+    siteAuthor: 'Jonatan Witoszek',
   },
   plugins: [
     {
@@ -23,18 +23,18 @@ module.exports = {
             slug: `/blog`,
           },
           {
-            title: "Projects",
-            slug: "/projects",
+            title: 'Projects',
+            slug: '/projects',
           },
           {
-            title: "Contact Me",
-            slug: "/contact",
+            title: 'Contact Me',
+            slug: '/contact',
           },
         ],
         externalLinks: [
           {
-            name: "Github",
-            url: "https://github.com/taniotanio7",
+            name: 'Github',
+            url: 'https://github.com/taniotanio7',
           },
           {
             name: `Twitter`,
@@ -59,9 +59,9 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "projects",
+        name: 'projects',
         path: `${__dirname}/content/projects`,
       },
     },
@@ -83,7 +83,7 @@ module.exports = {
         background_color: `#1A202C`,
         theme_color: `#CBD5E0`,
         display: `standalone`,
-        icon: "static/favicon.svg",
+        icon: 'static/favicon.svg',
         icons: [
           {
             src: `/android-chrome-192x192.png`,
@@ -99,7 +99,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-mailgo",
+      resolve: 'gatsby-plugin-mailgo',
       options: {
         mailgoConfig: {
           dark: true,
@@ -107,9 +107,9 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-simple-analytics",
+      resolve: 'gatsby-plugin-simple-analytics',
       options: {
-        domain: "sa.witoszek.dev",
+        domain: 'sa.witoszek.dev',
         trackPageViews: true,
       },
     },

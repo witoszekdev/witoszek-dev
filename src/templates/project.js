@@ -1,6 +1,7 @@
-/* @jsx jsx */
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { jsx } from '@theme-ui/core';
 import { Heading, Divider } from '@theme-ui/components';
 import Layout from '@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
 import { FiClock } from 'react-icons/fi';

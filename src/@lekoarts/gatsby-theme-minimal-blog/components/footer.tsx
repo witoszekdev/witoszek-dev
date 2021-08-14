@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui";
-import useSiteMetadata from "../hooks/use-site-metadata";
+import React from 'react';
+import { jsx, Themed } from 'theme-ui';
+import useSiteMetadata from '../hooks/use-site-metadata';
 
 const Footer = () => {
   const { siteAuthor } = useSiteMetadata();
@@ -18,35 +19,39 @@ const Footer = () => {
         },
         flexDirection: [`column`, `column`, `row`],
         variant: `dividers.top`,
-      }}>
+      }}
+    >
       <div>
-        &copy; {new Date().getFullYear()} by {siteAuthor}.{" "}
-        <Styled.a aria-label="Link to the license page" href="/license">
+        &copy; {new Date().getFullYear()} by {siteAuthor}.{' '}
+        <Themed.a aria-label="Link to the license page" href="/license">
           CC BY-SA
-        </Styled.a>
+        </Themed.a>
         .
-        <br /> Code examples are licensed on{" "}
-        <Styled.a
+        <br /> Code examples are licensed on{' '}
+        <Themed.a
           aria-label="Link to the code license page"
-          href="/license-code">
+          href="/license-code"
+        >
           MIT license
-        </Styled.a>
+        </Themed.a>
         .
       </div>
       <div>
-        <Styled.a
+        <Themed.a
           aria-label="Link to the theme's GitHub repository"
-          href="https://github.com/LekoArts/gatsby-themes/tree/master/themes/gatsby-theme-minimal-blog">
+          href="https://github.com/LekoArts/gatsby-themes/tree/master/themes/gatsby-theme-minimal-blog"
+        >
           Theme
-        </Styled.a>
+        </Themed.a>
         {` `}
         by
         {` `}
-        <Styled.a
+        <Themed.a
           aria-label="Link to the theme author's website"
-          href="https://www.lekoarts.de/en">
+          href="https://www.lekoarts.de/en"
+        >
           LekoArts
-        </Styled.a>
+        </Themed.a>
       </div>
     </footer>
   );

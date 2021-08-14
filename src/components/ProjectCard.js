@@ -1,8 +1,8 @@
-/* @jsx jsx */
-
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+import React from 'react';
 import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { jsx } from '@theme-ui/core';
 import { Text, Button, Box } from '@theme-ui/components';
 import { FiArrowRight } from 'react-icons/fi';
 import TechnologyBadge from './TechnologyBadge';

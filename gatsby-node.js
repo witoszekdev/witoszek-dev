@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `);
 
   if (mdxProjectFilesResult.error) {
-    reporter.panicOnBuild("ERROR: While executing project pages query");
+    reporter.panicOnBuild('ERROR: While executing project pages query');
   }
 
   const mdxProjectFilesIds = mdxProjectFilesResult.data.allFile.nodes.map(
@@ -52,8 +52,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   projects.forEach((project) => {
     createPage({
       path: `/projects${project.frontmatter.slug}`,
-      component: path.resolve("./src/templates/project.js"),
-      context: { id: project.id, body: project.body, frontmatter: project.frontmatter },
+      component: path.resolve('./src/templates/project.js'),
+      context: {
+        id: project.id,
+        body: project.body,
+        frontmatter: project.frontmatter,
+      },
     });
   });
 };

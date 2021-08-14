@@ -1,6 +1,6 @@
-/* @jsx jsx */
-
-import { jsx } from '@theme-ui/core';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+import React from 'react';
 import { Text } from '@theme-ui/components';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import Title from '@lekoarts/gatsby-theme-minimal-blog/src/components/title';

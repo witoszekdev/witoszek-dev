@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from 'react';
 import { jsx, useColorMode } from 'theme-ui';
 import { navigate } from 'gatsby';
 import { Box, Input, Textarea, Button, Text } from '@theme-ui/components';

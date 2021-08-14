@@ -1,7 +1,7 @@
-/* @jsx jsx */
-import { useState, useCallback } from 'react';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+import React, { useState, useCallback } from 'react';
 import { graphql } from 'gatsby';
-import { jsx } from '@theme-ui/core';
 import { Box, IconButton } from '@theme-ui/components';
 import { FiXCircle } from 'react-icons/fi';
 import Layout from '@lekoarts/gatsby-theme-minimal-blog/src/components/layout';

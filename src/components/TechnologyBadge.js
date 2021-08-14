@@ -1,5 +1,6 @@
-/* @jsx jsx */
-import { jsx } from '@theme-ui/core';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+import React from 'react';
 import { Box } from '@theme-ui/components';
 import useTechnologyData from '../hooks/useTechnologyData';
 import { shade, invert, darken, tint } from '@theme-ui/color';
